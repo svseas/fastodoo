@@ -40,12 +40,12 @@ Base.metadata.create_all(bind=engine)
 def store_letter(public_id: str):
     # Fetch from Odoo
     domain = [[['public_id', '=', public_id]]]
-    letter_ids = models.execute_kw(DATABASE_NAME, uid, PASSWORD, 'supreme.court.letter', 'search', domain)
+    letter_ids = models.execute_kw(DATABASE_NAME, uid, PASSWORD, 'model.name', 'search', domain)
 
     if not letter_ids:
         raise HTTPException(status_code=404, detail="Letter not found in Odoo")
 
-    letter_data = models.execute_kw(DATABASE_NAME, uid, PASSWORD, 'supreme.court.letter', 'read', [letter_ids],
+    letter_data = models.execute_kw(DATABASE_NAME, uid, PASSWORD, 'model.name', 'read', [letter_ids],
                                     {'fields': ['custom_url']})
     custom_url = letter_data[0].get('custom_url')
 
