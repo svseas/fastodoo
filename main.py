@@ -10,9 +10,9 @@ import requests
 app = FastAPI()
 
 # Odoo configuration
-ODOO_URL = "http://localhost:8060"
-DATABASE_NAME = "odoo"
-USERNAME = "admin"
+ODOO_URL = "yoururl"
+DATABASE_NAME = "yourdatabase"
+USERNAME = "yourusername"
 PASSWORD = "yourpasword"
 common = xmlrpc.client.ServerProxy(f'{ODOO_URL}/xmlrpc/2/common')
 uid = common.authenticate(DATABASE_NAME, USERNAME, PASSWORD, {})
